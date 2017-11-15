@@ -3,8 +3,8 @@ import java.util.Vector;
 
 public class Regle {
 
-	Vector<Fait> conditions;
-	Fait resultat;
+	private Vector<Fait> conditions;
+	private Fait resultat;
 	
 	public Regle(Vector<Fait> conditions, Fait resultat) {
 		this.conditions = conditions;
@@ -56,6 +56,11 @@ public class Regle {
 
 	public Fait getResultat() {
 		return resultat;
+	}
+
+	@Override
+	public String toString() {
+		return "\nRegle :\n\tconditions=" + conditions + "\n\tresultat=" + resultat;
 	}
 
 }
