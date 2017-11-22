@@ -3,11 +3,11 @@ import java.util.Vector;
 
 public class Regle {
 
-	private Vector<Fait> conditions;
-	private Fait resultat;
+	private Vector<Fait> premisses;
+	private Vector<Fait> resultat;
 	
-	public Regle(Vector<Fait> conditions, Fait resultat) {
-		this.conditions = conditions;
+	public Regle(Vector<Fait> premisses, Vector<Fait> resultat) {
+		this.premisses = premisses;
 		this.resultat = resultat;
 	}
 
@@ -17,8 +17,8 @@ public class Regle {
 	
 	public boolean verifieRegle(Vector<Fait> base_de_connaissances) {
 		
-		// Pour chaque conditions
-		for (Fait condition : this.conditions) {
+		// Pour chaque premisses
+		for (Fait condition : this.premisses) {
 			
 			// La condition n'est pour le moment pas vérifiée
 			boolean condition_verifiee = false;
@@ -42,7 +42,7 @@ public class Regle {
 			
 		}
 		
-		// Toutes les conditions sont réspectées
+		// Toutes les premisses sont réspectées
 		return true;
 	}
 	
@@ -50,17 +50,17 @@ public class Regle {
 	 * GETTERS & SETTERS
 	 */
 	
-	public Vector<Fait> getConditions() {
-		return conditions;
+	public Vector<Fait> getPremisses() {
+		return premisses;
 	}
 
-	public Fait getResultat() {
+	public Vector<Fait> getResultat() {
 		return resultat;
 	}
 
 	@Override
 	public String toString() {
-		return "\nRegle :\n\tconditions=" + conditions + "\n\tresultat=" + resultat;
+		return "\nRegle :\n\tPremisses=" + this.premisses + "\n\tResultat=" + resultat;
 	}
 
 }

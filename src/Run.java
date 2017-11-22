@@ -8,8 +8,8 @@ public class Run {
 	 */
 	public static void main(String[] args) {
 
-		Vector<Regle> base_de_faits = new Vector<Regle>();
-		Vector<Fait> base_de_connaissances = new Vector<Fait>();
+		BaseDeFait base_de_faits = new BaseDeFait();
+		BaseDeConnaissance base_de_connaissances = new BaseDeConnaissance();
 		
 		// Prédicats
 		String p_a = "a";
@@ -24,16 +24,20 @@ public class Run {
 		Fait fait5 = new Fait("Jack", p_a, "la peste");
 		
 		// Si Jack tousse et est tout blanc, alors il est marié à Jane
-		Vector<Fait> conditions1 = new Vector<Fait>();
-		conditions1.add(fait1);
-		conditions1.add(fait2);
-		Regle regle1 = new Regle( conditions1, fait3 );
+		Vector<Fait> premisses1 = new Vector<Fait>();
+		premisses1.add(fait1);
+		premisses1.add(fait2);
+		Vector<Fait> resultats1 = new Vector<Fait>();
+		resultats1.add(fait3);
+		Regle regle1 = new Regle( premisses1, resultats1 );
 		
 		// Si Jack est marié à Jane et Jane a la peste, alors Jack a la peste
-		Vector<Fait> conditions2 = new Vector<Fait>();
-		conditions2.add(fait3);
-		conditions2.add(fait4);
-		Regle regle2 = new Regle( conditions2, fait5 );
+		Vector<Fait> premisses2 = new Vector<Fait>();
+		premisses2.add(fait3);
+		premisses2.add(fait4);
+		Vector<Fait> resultats2 = new Vector<Fait>();
+		resultats2.add(fait5);
+		Regle regle2 = new Regle( premisses2, resultats2 );
 		
 		// Regles
 		base_de_faits.add(regle1);
@@ -42,20 +46,18 @@ public class Run {
 		// Base de connaissances
 		base_de_connaissances.add( fait1 );
 		base_de_connaissances.add( fait2 );
-//		base_de_connaissances.add( fait4 );
+		base_de_connaissances.add( fait4 );
 
-		System.out.println("\n#### Avant");
+		System.out.println("\n#### BEGIN");
 		display(base_de_connaissances);
 		
-		for (Regle regle : base_de_faits) {
-			System.out.println(regle.toString());
-			if (regle.verifieRegle(base_de_connaissances)) {
-				System.out.println("OK");
-				base_de_connaissances.add(regle.getResultat());
-			}
+		// On récupère le solveur
+		Solveur solveur = Solveur.getInstance();
+		if (solveur.chainageAvantLargeur(base_de_faits, base_de_connaissances, fait5)) {
+			System.out.println("\nCQVD");;
 		}
 
-		System.out.println("\n#### Après");
+		System.out.println("\n#### END");
 		display(base_de_connaissances);
 		
 
