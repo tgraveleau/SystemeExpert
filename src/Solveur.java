@@ -46,11 +46,18 @@ public class Solveur {
 				}
 				
 			} else {
-				// On sort de la boucle car il au moins une condition n'est pas respectée
+				// On sort de la boucle car il y a au moins une condition n'est pas respectée
 				break;
 			}
 			
 		}
+		
+		return false;
+	}
+	
+	public boolean chainageArriereLargeur(BaseDeFait base_de_faits, BaseDeConnaissance base_de_connaissances, Fait cqvd) {
+		
+		
 		
 		return false;
 	}

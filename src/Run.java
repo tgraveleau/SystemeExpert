@@ -8,6 +8,8 @@ public class Run {
 	 */
 	public static void main(String[] args) {
 
+		SystemeExpertUI ui;
+		
 		BaseDeFait base_de_faits = new BaseDeFait();
 		BaseDeConnaissance base_de_connaissances = new BaseDeConnaissance();
 		
@@ -59,7 +61,8 @@ public class Run {
 
 		System.out.println("\n#### END");
 		display(base_de_connaissances);
-		
+
+		ui = SystemeExpertUI.getInstance();
 
 	}
 
