@@ -9,6 +9,13 @@ public class Solveur {
 
 	private static Solveur instance;
 
+	/**
+	 * 
+	 * @param base_de_faits
+	 * @param base_de_connaissances
+	 * @param cqvd
+	 * @return
+	 */
 	public boolean chainageAvantLargeur(BaseDeFait base_de_faits, BaseDeConnaissance base_de_connaissances, Fait cqvd) {
 		
 		// Si cqvd est déjà dans la bdc alors pas besoin d'aller plus loin
@@ -38,6 +45,9 @@ public class Solveur {
 					base_de_connaissances.add(resultat);
 				}
 				
+			} else {
+				// On sort de la boucle car il au moins une condition n'est pas respectée
+				break;
 			}
 			
 		}
