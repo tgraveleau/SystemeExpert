@@ -29,17 +29,13 @@ public class Run {
 		Vector<Fait> premisses1 = new Vector<Fait>();
 		premisses1.add(fait1);
 		premisses1.add(fait2);
-		Vector<Fait> resultats1 = new Vector<Fait>();
-		resultats1.add(fait3);
-		Regle regle1 = new Regle( premisses1, resultats1 );
+		Regle regle1 = new Regle( premisses1, fait3 );
 		
 		// Si Jack est marié à Jane et Jane a la peste, alors Jack a la peste
 		Vector<Fait> premisses2 = new Vector<Fait>();
 		premisses2.add(fait3);
 		premisses2.add(fait4);
-		Vector<Fait> resultats2 = new Vector<Fait>();
-		resultats2.add(fait5);
-		Regle regle2 = new Regle( premisses2, resultats2 );
+		Regle regle2 = new Regle( premisses2, fait5 );
 		
 		// Regles
 		base_de_faits.add(regle1);
@@ -55,9 +51,8 @@ public class Run {
 		
 		// On récupère le solveur
 		Solveur solveur = Solveur.getInstance();
-		if (solveur.chainageAvantLargeur(base_de_faits, base_de_connaissances, fait5)) {
-			System.out.println("\nCQVD");;
-		}
+//		solveur.chainageAvant(base_de_faits, base_de_connaissances);
+		solveur.chainageArriere(base_de_faits, base_de_connaissances, fait5);
 
 		System.out.println("\n#### END");
 		display(base_de_connaissances);

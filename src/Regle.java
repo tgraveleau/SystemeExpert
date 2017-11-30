@@ -4,11 +4,13 @@ import java.util.Vector;
 public class Regle {
 
 	private Vector<Fait> premisses;
-	private Vector<Fait> resultat;
+	private Fait resultat;
+	private boolean activable;
 	
-	public Regle(Vector<Fait> premisses, Vector<Fait> resultat) {
+	public Regle(Vector<Fait> premisses, Fait resultat) {
 		this.premisses = premisses;
 		this.resultat = resultat;
+		this.activable = true;
 	}
 
 	/**
@@ -54,8 +56,16 @@ public class Regle {
 		return premisses;
 	}
 
-	public Vector<Fait> getResultat() {
+	public Fait getResultat() {
 		return resultat;
+	}
+
+	public boolean isActivable() {
+		return activable;
+	}
+
+	public void setActivable(boolean estActivable) {
+		this.activable = estActivable;
 	}
 
 	@Override
